@@ -1,0 +1,25 @@
+.card{
+    width: 100%;
+}
+.card img {
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+    align-items: center;
+    max-width: 280px;
+    min-width: 200px;
+}
+.card a{
+    object-fit: contain;
+    padding: 0;
+    max-width: 280px;
+    max-height: 100px;
+}
+.categority span{
+    color: #c3c3c3;
+    margin: 0 20px;
+}
+.categority span:hover{
+    color: aliceblue;
+    cursor: pointer;
+}

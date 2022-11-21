@@ -1,0 +1,18 @@
+
+.search{
+    padding: 30px 0;
+}
+.listGifs{
+    display: grid;
+    grid-template-columns:  repeat(auto-fit,minmax(300px,1fr)) ;
+    gap: 10px 16px;
+    min-height: 100vh;
+    align-items: center;
+    grid-template-rows: subgrid;
+}
+
+
+.divListCategority{
+    display: flex;
+    flex-wrap: wrap;
+}
