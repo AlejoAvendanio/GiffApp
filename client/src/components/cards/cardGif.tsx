@@ -7,10 +7,10 @@ export interface GIF{
   src:string,
   alt:string,
   id:string,
+  title?:string,
   url?:string,
-  title?:string
 }
-export default function Card({src,alt, id }:GIF) {
+export default function Card({src,alt, id }: GIF) {
 
   return (
     <div className='card'>

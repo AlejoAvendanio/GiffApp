@@ -77,7 +77,6 @@ export default function SearchResults() {
         <title >{title} | GiffApp</title>
         <meta name="description" content={title}></meta>
       </Helmet>
-
         <Link to={"/"}><button>home</button></Link>
         <SearchBar setGifs={setGifs} setLoading={setLoading} initalInput={input} initialRating={rating}/>
         <h3 className='titleSearch'>{titlePage}</h3>
