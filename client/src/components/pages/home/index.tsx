@@ -57,7 +57,7 @@ export const Home = () => {
         <meta name="description" content="Home GiffApp"></meta>
       </Helmet>
       {
-        lastSearch.length ?
+        lastSearch?.length ?
         <LastSearchs/>
         : <></>
         }
