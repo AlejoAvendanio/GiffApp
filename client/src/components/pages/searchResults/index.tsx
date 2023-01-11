@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState,useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import UseFetch from '../../fetch/useFetch'
 import ListGifs from '../../list/listOfGifs'
@@ -7,19 +7,26 @@ import {Helmet} from 'react-helmet'
 import { Loading } from '../../loading'
 import SearchBar from '../../searchBar'
 import "./style.css"
+import Context from '../../context/userContex'
+import { UserContexType } from '../../hooks/type'
+
+
 const INITIAL_STATE = 0
+
 export default function SearchResults() {
   
     const { input,rating} = useParams()
 
-    const [gifs, setGifs] = useState()
+    const [gifs, setGifs] = useState<string[]>([])
 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState<boolean>(false)
 
     const nextpage = useRef(null)
 
-    const [page,setPage] = useState(INITIAL_STATE)
+    const [page,setPage] = useState<number>(INITIAL_STATE)
 
+    const {setLastSearch} = useContext(Context) as UserContexType
+    
     const title = gifs 
     ? `${gifs.length} resultados de ${input}` 
     : loading 
@@ -28,19 +35,21 @@ export default function SearchResults() {
 
     useEffect(()=>{
         UseFetch({keyword:input,rating:rating}).then(res=>setGifs(res))
+        window.localStorage.setItem("lastSearchName",input || "")
     },[input, rating])
 
     useEffect(()=>{
       if(page===INITIAL_STATE)return
       UseFetch({ keyword:input, page, rating:rating}).then(res=>{
-        setGifs(prevGifs=> prevGifs?.concat(res))
+        setGifs((prevGifs:any)=> prevGifs?.concat(res))
+        setLastSearch(gifs)
       })
     },[page,input,rating])
 
     // useSEO({title:title})
-    let titlePage = input.toUpperCase()
+    let titlePage = input?.toUpperCase()
     useEffect(()=>{
-      const handleNextPage = (entries)=>{
+      const handleNextPage = (entries:any)=>{
         console.log(entries)
         const el = entries[0]
         if(el.isIntersecting){
@@ -57,10 +66,10 @@ export default function SearchResults() {
       const observer = new IntersectionObserver(handleNextPage,{
         rootMargin:"20px"
       })
-      observer.observe(nextpage.current)
+      observer.observe(nextpage.current!)
       return ()=> observer && observer.disconnect()
     },[page])
-
+    window.localStorage.setItem("lastsearch",JSON.stringify(gifs.slice(0,15)))
 
   return (
     <div>

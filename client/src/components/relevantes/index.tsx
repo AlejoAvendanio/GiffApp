@@ -1,43 +1,59 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
+import Context from '../context/userContex'
 import { getRandomGif } from '../fetch/useFetch'
+import { UserContexType } from '../hooks/type'
+import { Loading } from '../loading'
+
+
 
 export default function Relevantes() {
+    const {trends} = useContext(Context) as UserContexType
     const [panda , setPanda] = useState([])
     const [perritos , setPerritos] = useState([])
     const [gatitos , setGatitos] = useState([])
     useEffect(()=>{
-        getRandomGif({keyword:"panda"}).then(res=>setPanda(res))
-        getRandomGif({keyword:"perritos"}).then(res=>setPerritos(res))
-        getRandomGif({keyword:"gatitos"}).then(res=>setGatitos(res))
-    },[])
+        getRandomGif({keyword:trends[1]}).then(res=>setPanda(res))
+        getRandomGif({keyword:trends[8]}).then(res=>setPerritos(res))
+        getRandomGif({keyword:trends[3]}).then(res=>setGatitos(res))
+    },[trends])
   return (
     <div>
-        <h3>Mas relevantes</h3>
-            <h3>pandas</h3>
+        <h3 style={{color:"#fff"}}>Mas relevantes</h3>
+            <h3 style={{color:"#fff"}}>{trends[1]}</h3>
         <div style={{display:"flex", justifyContent:"space-around"}}>
+        
+        
         {
-        panda?.map((e:any)=>{
+            panda.length ? 
+        panda.map((e:any)=>{
             return(
                     <img style={{width:"200px",height:"150px",}} key={e.id} src={e.url} alt={e.id}/>
             )})
-        }</div>
-        <h3>perritos</h3>
+        : <></>
+        }
+        </div>
+        <h3 style={{color:"#fff"}}>{trends[8]}</h3>
         <div style={{display:"flex", justifyContent:"space-around"}}>
         {
-        perritos?.map((e:any)=>{
+            perritos.length ?
+        perritos.map((e:any)=>{
             return(
                     <img style={{width:"200px",height:"150px"}}key={e.id} src={e.url} alt={e.id}/>
             )
         })
-        }</div>
-        <h3>gatitos</h3>
+        
+        : <></>
+    }</div>
+        <h3 style={{color:"#fff"}}>{trends[3]}</h3>
         <div style={{display:"flex", justifyContent:"space-around"}}>
         {
-        gatitos?.map((e:any)=>{
+            gatitos.length ?
+        gatitos.map((e:any)=>{
             return(
                     <img key={e.id} style={{width:"200px",height:"150px"}} src={e.url} alt={e.id}/>
             )
         })
+        : <></>
         }</div>
     </div>
   )

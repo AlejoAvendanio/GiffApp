@@ -3,12 +3,16 @@
     padding: 30px 0;
 }
 .listGifs{
-    columns: 5 320px;
-    column-gap: 0;
+    columns: 5 260px;
+    column-gap: 0,5em;
+    margin: 10px;
 }
 
 
 .divListCategority{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 2rem;
 }

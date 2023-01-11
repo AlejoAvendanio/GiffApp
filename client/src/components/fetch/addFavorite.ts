@@ -17,7 +17,6 @@ export default async function addFav (id:string,jwt:string){
     return await axios(config)
       .then(res=>{
         const {data} = res
-        console.log(data)
         return data
       })
       .catch((error)=>console.log(error))

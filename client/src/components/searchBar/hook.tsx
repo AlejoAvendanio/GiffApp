@@ -31,7 +31,7 @@ export default function useForm ({initalInput ="", initialRating="g"}){
       input:initalInput,
       rating:initialRating
     })
-
+    
     const {input,rating}= state
 
     return{

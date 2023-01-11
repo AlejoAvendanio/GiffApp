@@ -1,28 +1,70 @@
 .card{
-    
-    position: relative;
+    /* border:solid 3px white; 
     z-index: 1;
     max-width: 280px;
-    margin-bottom: 0.5em;
-    border-color: #fff;
+    margin-bottom: 1em; */
+    position: relative;
+
+    display: block;
+    margin-bottom: .5em;
+    /* border-color: #fff; */
+}
+.a{
+    display: flex;
 }
 .card img {
-    /* position: relative; */
+    position: relative;
     justify-content: center;
     object-fit: cover;
     z-index: 10;
     align-items: center;
-    margin: 0;
-    border-color: #fff;
-    max-width: 280px;
+    /* border-color: #fff; */
+    width: 100%;
 }
 
 
 .categority span{
     color: #c3c3c3;
-    margin: 0 20px;
+    padding: 5px;
 }
 .categority span:hover{
     color: aliceblue;
     cursor: pointer;
 }
+
+.card:nth-child(5n + 1){
+    /* border:  solid 3px red ; */
+    outline: 3px solid rgb(52, 52, 255);
+  }
+
+  .card:nth-child(5n + 2)  {
+    outline: 3px solid rgb(252, 58, 252);
+  }
+  .card:nth-child(5n + 3)  {
+    outline: 3px solid rgb(71, 255, 80);
+  }
+  .card:nth-child(5n + 4)  {
+    outline: 3px solid rgb(255, 37, 37);
+  }
+  .card:nth-child(5n + 5) {
+    outline: 3px solid rgb(255, 251, 43);
+  }
+
+
+  .categority:nth-child(5n + 1){
+    /* border:  solid 3px red ; */
+    outline: 3px solid rgb(52, 52, 255);
+  }
+
+  .categority:nth-child(5n + 2)  {
+    outline: 3px solid rgb(252, 58, 252);
+  }
+  .categority:nth-child(5n + 3)  {
+    outline: 3px solid rgb(71, 255, 80);
+  }
+  .categority:nth-child(5n + 4)  {
+    outline: 3px solid rgb(255, 37, 37);
+  }
+  .categority:nth-child(5n + 5) {
+    outline: 3px solid rgb(255, 251, 43);
+  }

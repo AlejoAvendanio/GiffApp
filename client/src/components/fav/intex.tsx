@@ -5,11 +5,11 @@ import  ModalPortal  from '../modal'
 import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register/inex'
 import "./style.css"
-interface FAVS {
+type FAVS =  {
   id:string
 }
 
-export default function Fav ({id}:any) {
+const Fav:React.FC<FAVS> = ({id}:FAVS)=> {
   const {isLogged,fav, favs} = useUser()
   // const navigate = useNavigate()
   const [showModal,setShowModal] = useState(false) 
@@ -54,3 +54,5 @@ export default function Fav ({id}:any) {
     </>
   )
 }
+
+export default Fav

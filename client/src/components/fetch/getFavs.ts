@@ -14,7 +14,6 @@ export default async function getFavs (jwt:string){
     return await axios(config)
       .then(res=>{
         const {data} = res
-        console.log(data)
         return data
       })
       .catch((error)=>console.log(error))

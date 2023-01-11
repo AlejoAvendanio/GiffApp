@@ -13,7 +13,6 @@ function App() {
   return(
       <div className='App'>
         <BrowserRouter>
-            <Header/>
           <Routes>
             <Route path='/detail/:id' element={<Details/>}/>
             <Route path='/search/:input/:rating' element={<SearchResults/>}/>

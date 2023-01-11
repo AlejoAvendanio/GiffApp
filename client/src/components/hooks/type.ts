@@ -6,6 +6,12 @@ export type User = {
 export type UserContexType ={
     jwt: string,
     favs:[],
+    lastSearch:string[],
+    trends:string[],
+    lastSearchName:string,
+    setLastSearchName:(value:string)=>void,
+    setTrends:(value:string[])=>void,
     setJWT: (value:string)=>void,
-    setFav:(value:any)=>any
+    setFav:(value:string[])=>void,
+    setLastSearch:(value:string[])=>void
 }
