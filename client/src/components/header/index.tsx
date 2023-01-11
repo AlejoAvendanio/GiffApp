@@ -16,10 +16,14 @@ export const Header = () => {
         <button onClick={handleClick}>
             Logout
         </button>
-        :
-        <Link to="/login">
-            Login
-        </Link>
+        :<>
+          <Link to="/login">
+              Login
+          </Link>
+          <Link to="/register">
+            Register
+          </Link>
+        </>
     }
     </header>
   )

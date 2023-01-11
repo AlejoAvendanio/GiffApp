@@ -13,8 +13,9 @@ export interface URL {
 const api_key = "7wJva7YAYuxRxDKhUNRaFiqEVnqqEOJo"
 const URI = "https://api.giphy.com/v1/gifs/search"
 export default function UseFetch({keyword="" , page=0, limit=8, rating="g"}={}) {
+    console.log(keyword)
+    
     const apiURL = `${URI}?api_key=${api_key}&q=${keyword}&limit=${limit}&offset=${page*limit}&rating=${rating}&lang=es`
-    console.log(apiURL)
     return fetch(apiURL)
         .then(res=>res.json())
         .then(res=>{
@@ -53,7 +54,6 @@ export const getInfoById = ({id}:any)=>{
 }
 
 export const getRandomGif = ({keyword=""}={})=>{
-    console.log(keyword)
     const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${keyword}&limit=5&offset=0&rating=g&lang=es`
     return fetch(apiUrl)
     .then(res=>res.json())

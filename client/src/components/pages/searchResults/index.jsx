@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import UseFetch from '../../fetch/useFetch'
 import ListGifs from '../../list/listOfGifs'
-import { useSEO } from '../../hooks/useSEO'
 import {Helmet} from 'react-helmet'
 import { Loading } from '../../loading'
 import SearchBar from '../../searchBar'
+import "./style.css"
 const INITIAL_STATE = 0
 export default function SearchResults() {
   
@@ -37,8 +37,8 @@ export default function SearchResults() {
       })
     },[page,input,rating])
 
-    useSEO({title:title})
-
+    // useSEO({title:title})
+    let titlePage = input.toUpperCase()
     useEffect(()=>{
       const handleNextPage = (entries)=>{
         console.log(entries)
@@ -65,13 +65,13 @@ export default function SearchResults() {
   return (
     <div>
       <Helmet>
-        <title>{title} | GiffApp</title>
+        <title >{title} | GiffApp</title>
         <meta name="description" content={title}></meta>
       </Helmet>
 
         <Link to={"/"}><button>home</button></Link>
         <SearchBar setGifs={setGifs} setLoading={setLoading} initalInput={input} initialRating={rating}/>
-        <h3>{input}</h3>
+        <h3 className='titleSearch'>{titlePage}</h3>
         <ListGifs gifs={gifs}/>
         {loading ? "":<Loading/>}
         <div ref={nextpage}>

@@ -9,7 +9,6 @@ const TrendingSerches = React.lazy(
 
 export default function LazyTrending(){
     const {show,elementRef} = useNearSreen()
-    console.log(show)
     return <div ref={elementRef}>
         <Suspense fallback={<Loading/>}>
         {

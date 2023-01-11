@@ -6,31 +6,31 @@ import addFav from '../fetch/addFavorite'
 
 
 export const useUser = () => {
-    const {jwt, setJWT,setFav} = useContext(Context) as UserContexType
+    const {jwt, setJWT,setFav,favs} = useContext(Context) as UserContexType
     const [state, setState] = useState({loading:false,
     error: false})
-
+    const [logins, setLogins] = useState(false)
     const login = useCallback((input:any)=>{
       setState({loading:true,error:false})
-      loginService(input)
+      return loginService(input)
       .then(res=>{
         window.sessionStorage.setItem("jwt",JSON.stringify(res))
         setState({loading:false,error:false})
-        setJWT(res)
+        setJWT(res.token)
+        setLogins(logins)
+        return true
       })
       .catch(err=>{
         window.sessionStorage.removeItem("jwt")
         setState({loading:false,error:true})
         console.error(err)
       })
-    },[setJWT])
+    },[setJWT,logins])
 
 
     const fav = useCallback((id:any)=>{
-      const user = JSON.parse(window.sessionStorage.getItem("jwt")||"")
-      console.log(user)
-       const {token, email} = user
-      addFav(email,id,token)
+      const token = window.sessionStorage.getItem("jwt") || ""
+      addFav(id,token)
         .then((res:any)=>{
           setFav(res)
         })
@@ -40,7 +40,7 @@ export const useUser = () => {
 
     const logout = useCallback(()=>{
       window.sessionStorage.removeItem("jwt")
-      setJWT(false)
+      setJWT("")
     },[setJWT])
 
   return {
@@ -49,6 +49,7 @@ export const useUser = () => {
     hasLoginError:state.error,
     login,
     logout,
-    fav
+    fav,
+    favs
   }
 }

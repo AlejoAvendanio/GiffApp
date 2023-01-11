@@ -4,7 +4,8 @@ export type User = {
     token:string
 }
 export type UserContexType ={
-    jwt: boolean,
-    setJWT: (value:boolean)=>void,
+    jwt: string,
+    favs:[],
+    setJWT: (value:string)=>void,
     setFav:(value:any)=>any
 }

@@ -18,7 +18,7 @@ export default function Relevantes() {
         {
         panda?.map((e:any)=>{
             return(
-                    <img style={{width:"200px",height:"150px",}} src={e.url} alt={e.id}/>
+                    <img style={{width:"200px",height:"150px",}} key={e.id} src={e.url} alt={e.id}/>
             )})
         }</div>
         <h3>perritos</h3>
@@ -26,7 +26,7 @@ export default function Relevantes() {
         {
         perritos?.map((e:any)=>{
             return(
-                    <img style={{width:"200px",height:"150px"}} src={e.url} alt={e.id}/>
+                    <img style={{width:"200px",height:"150px"}}key={e.id} src={e.url} alt={e.id}/>
             )
         })
         }</div>
@@ -35,7 +35,7 @@ export default function Relevantes() {
         {
         gatitos?.map((e:any)=>{
             return(
-                    <img style={{width:"200px",height:"150px"}} src={e.url} alt={e.id}/>
+                    <img key={e.id} style={{width:"200px",height:"150px"}} src={e.url} alt={e.id}/>
             )
         })
         }</div>

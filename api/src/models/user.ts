@@ -39,5 +39,5 @@ userSchema.methods.validatePassword =async function(password:string):Promise<boo
 }
 
 
-const User = model<Iuser>('users', userSchema);
+const User = model<Iuser>('Users', userSchema);
 module.exports = User

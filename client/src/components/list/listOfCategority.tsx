@@ -13,7 +13,7 @@ export default function TrendingSerches() {
         <h3>Trending Giff</h3>
     <div className='divListCategority'>
     {
-        trends?.map((e)=><CategorityTrending categority={e}/>)
+        trends?.map((e)=><CategorityTrending ranking={"g"} categority={e}/>)
     }
   </div>
   </div>

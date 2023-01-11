@@ -1,0 +1,19 @@
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search input{
+    height: 28px;
+    font-size: 14px;
+
+}
+.search button{
+    height: 34px;
+    font-size: 14px;
+}
+.search select{
+    margin-left: 10px;
+    font-size: 14px;
+    height: 34px;
+}

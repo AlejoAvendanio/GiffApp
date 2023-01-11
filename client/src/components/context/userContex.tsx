@@ -1,5 +1,7 @@
-import React, { useState, ReactNode } from 'react'
-import { User } from '../hooks/type'
+
+import React, { useState, ReactNode,useEffect } from 'react'
+import getFavs from '../fetch/getFavs'
+// import { User } from '../hooks/type'
 
 
 
@@ -11,9 +13,16 @@ interface Props {
 
 export function UserContex ({children}:Props){
     const [jwt,setJWT] = useState(()=>window.sessionStorage.getItem("jwt"))
-    const [fav,setFav] = useState()
+    const [favs,setFav] = useState([])
+    useEffect(()=>{
+      if(!jwt) return setFav([])
+      else{
+        getFavs(jwt).then(setFav)
+      }
+    },[jwt])
+
   return (
-    <Context.Provider value={{fav,jwt,setFav,setJWT}}>
+    <Context.Provider value={{favs,jwt,setFav,setJWT}}>
       {children}
     </Context.Provider>
   )

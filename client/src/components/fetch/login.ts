@@ -12,10 +12,12 @@ export default async function login (input:any){
         password:input.password
       },
     };
+    console.log("hola")
     return await axios(config)
       .then(res=>{
         const {data} = res
-        return data
+        window.localStorage.setItem("name",data.name)
+        return data.token
       })
       .catch((error)=>console.log(error))
 }

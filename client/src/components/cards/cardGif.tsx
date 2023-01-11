@@ -14,9 +14,9 @@ export default function Card({src,alt, id }:GIF) {
 
   return (
     <div className='card'>
-      <Fav id={id}/>
-      <Link to={`/detail/${id}`}>
-        <img src={src} alt={alt} />
+      <Fav id={id} className="fav_button"/>
+      <Link className='a' to={`/detail/${id}`}>
+        <img src={src} alt={alt} ></img>
       </Link>
     </div>
   )

@@ -1,0 +1,12 @@
+.fav_button{
+    z-index: 100;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    right: 10px;
+    color: brown;
+}
+
+
+

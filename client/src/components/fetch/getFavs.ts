@@ -1,18 +1,15 @@
+
 import axios from "axios";
 
 const ENDPOINT = "http://localhost:3002/users"
 
-
-export default async function addFav (id:string,jwt:string){
+export default async function getFavs (jwt:string){  
   const token = jwt.slice(1,-1)  
-    
-        const config = {
-            method: "POST",
+  console.log(token)
+    const config = {
+            method: "get",
       baseURL: `${ENDPOINT}/favorite`,
       headers:{token:token},
-      data: {
-        gif:{id:id},
-      },
     };
     return await axios(config)
       .then(res=>{

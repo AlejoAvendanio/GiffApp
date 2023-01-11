@@ -1,13 +1,16 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
-export const CategorityTrending = ({categority}:any) => {
+type cate = {
+  categority:string,
+  ranking:string
+}
+export const CategorityTrending = ({ranking ,categority}:cate) => {
     const navegate = useNavigate()
     const handleClick = ()=>{
-        navegate(`/search/${categority}`)
+        navegate(`/search/${categority}/${ranking}`)
     }
   return (
     <div className='categority'>
-        <span onClick={handleClick}>{categority}</span>
+        <span onClick={()=>handleClick()}>{categority}</span>
     </div>
   )
 }

@@ -9,10 +9,12 @@ import {Helmet} from 'react-helmet'
 import { Loading } from '../../loading'
 
 
+// console.log(process.on)
+
+
 export const Home = () => {
     const [gifs, setGifs] = useState<Array<URL>>([])
   const [loading, setLoading] = useState<Boolean>(false)
-  console.log(gifs)
   const title = gifs.length>0 ? "Home | GiffApp" : loading ? "" :"Cargando... | GiffApp"
   useEffect(function(){
     setLoading(false)

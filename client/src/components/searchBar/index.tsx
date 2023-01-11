@@ -1,6 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import useForm from './hook'
+import "./style.css"
+
 const RATINGS = ["g", "pg", "pg-13", "r"]
 
 
