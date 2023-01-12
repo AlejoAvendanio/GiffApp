@@ -44,7 +44,7 @@ export default function SearchBar({setGifs,setLoading,initalInput ="", initialRa
     <div className='search'>
         <form onSubmit={(e)=>handleSubmit(e)}>
           <input type="text" onChange={(e)=>handleChance(e)} name={input} value={input}/>
-          <button>search</button>
+          <button className='searchButton'>search</button>
         </form>
         <select value={rating} onChange={handleSelect}>
           

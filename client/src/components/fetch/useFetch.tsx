@@ -52,7 +52,7 @@ export const getInfoById = ({id}:any)=>{
 }
 
 export const getRandomGif = ({keyword=""}={})=>{
-    const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${keyword}&limit=5&offset=0&rating=g&lang=es`
+    const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${keyword}&limit=1&offset=0&rating=g&lang=es`
     return fetch(apiUrl)
     .then(res=>res.json())
     .then(res=>{

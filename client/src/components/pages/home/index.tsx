@@ -12,7 +12,8 @@ import { UserContexType } from '../../hooks/type'
 import Context from '../../context/userContex'
 import { getTrendingTerms } from '../../fetch/useFetch'
 import { Header } from '../../header/index';
-
+import emoji from "../../img/emoju.png"
+import "./style.css"
 // console.log(process.on)
 
 
@@ -41,9 +42,9 @@ export const Home = () => {
     <div>
       <nav style={{display:"flex", justifyContent:"space-between" ,padding:"20px 40px"}}>
         <div>
-          <h1 style={{color:"#FFF"}}>Giffy clone</h1>
+          <h1 className='h1' style={{ display:"flex"}}><img src={emoji} alt={"im"} width={50}/>Giffy clone</h1>
         </div>
-        <div style={{display:"flex",alignItems:"center",width:400, justifyContent:"space-between"}}>
+        <div style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
           <SearchBar 
           setGifs={setGifs} 
           setLoading={setLoading} 
@@ -65,7 +66,7 @@ export const Home = () => {
         loading ?
       <div>
       <Relevantes/>
-        <h2 style={{color:"#fff"}}>Mas Relevante del dia</h2>
+        <h2 className='h2'>Mas Relevante del dia</h2>
         <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
           {
             gifs.length ?

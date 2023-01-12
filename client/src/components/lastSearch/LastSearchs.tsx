@@ -10,7 +10,7 @@ export const LastSearchs = () => {
   lastSearchName= JSON.stringify(lastSearchName).slice(1,-1)
   console.log(lastSearchName)
   return <div>
-    <h3 className='h3'>Last Serch: {lastSearchName}</h3>
+    <h3 className='h2'>Last Serch: {lastSearchName}</h3>
     <ListGifs gifs={lastSearch}/>
   </div>
 }

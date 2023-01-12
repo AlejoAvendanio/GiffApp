@@ -34,11 +34,11 @@ const Fav:React.FC<FAVS> = ({id}:FAVS)=> {
   ] = isFaved
   ? [
     "Remove",
-    "❌"
+    "☆"
   ]
   : [
     "Add Favorite",
-    "❤"
+    "★"
   ]
   return (
     <>

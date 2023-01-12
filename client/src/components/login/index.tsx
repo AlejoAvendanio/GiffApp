@@ -44,7 +44,7 @@ export const Login = () => {
             <form onSubmit={handleSubmit} className="form">
                 <input className='int' type="text" placeholder='email' name='email' onChange={handleChance}/>
                 <input className='int' type="password" placeholder='password'  name='password' onChange={handleChance}/>
-                <button className='btnSubmit'>login</button>
+                <button className='btnSubmit'>Login</button>
             </form>
         }
         {
