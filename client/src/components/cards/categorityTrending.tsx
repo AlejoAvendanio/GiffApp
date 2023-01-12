@@ -10,7 +10,7 @@ export const CategorityTrending = ({ranking ,categority}:cate) => {
     }
   return (
     <div className='categority'>
-        <span onClick={()=>handleClick()}>{categority}</span>
+        <span className='' onClick={()=>handleClick()}>{categority}</span>
     </div>
   )
 }

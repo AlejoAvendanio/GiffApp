@@ -8,12 +8,33 @@
     font-size: 14px;
 
 }
-.search button{
+/* .search button{
     height: 34px;
     font-size: 14px;
-}
+} */
 .search select{
     margin-left: 10px;
     font-size: 14px;
     height: 34px;
 }
+
+.searchButton{  
+    background: -webkit-linear-gradient(#fff200, #ff00ea);  
+    background: -moz-linear-gradient(#ff00ea,#fff200);  
+    background: -o-linear-gradient(#fff200, #ff00ea);  
+    background: linear-gradient(#fff200, #ff00ea);  
+    -webkit-transition: background .3s ease;  
+    -moz-transition: background .3s ease;  
+    -o-transition: background .3s ease;  
+    transition: background .3s ease;  
+    background-size:1px 90px;   
+    cursor:pointer;  
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    height: 38px;
+    font-size: 14px;
+}  
+.searchButton:hover{  
+    background-position:10px;  
+} 

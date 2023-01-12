@@ -73,7 +73,7 @@ export function Register(){
     >
       {
         ({isSubmitting})=>
-          <Form>
+          <Form className='form'>
             <Field className='int' type="text" placeholder='email' name='email'/>
             <ErrorMessage name='email' component="small"></ErrorMessage>
             <Field className='int' type="text" placeholder='name' name='name'/>
