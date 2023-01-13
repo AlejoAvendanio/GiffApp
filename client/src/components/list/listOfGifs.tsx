@@ -8,7 +8,7 @@ export default function ListGifs({gifs}:any) {
     <>
       <div className='listGifs'>
         {
-          gifs ? gifs?.map((e:any)=><Card src={e?.url} alt={e?.url} key={e?.id} id={e?.id} title={e?.title}/> ) : <Loading/>
+          gifs?.length ? gifs?.map((e:any)=><Card src={e?.url} alt={e?.url} key={e?.id} id={e?.id} title={e?.title}/> ) : <Loading/>
         }
       </div>
     </>

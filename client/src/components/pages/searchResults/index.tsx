@@ -9,6 +9,7 @@ import SearchBar from '../../searchBar'
 import "./style.css"
 import Context from '../../context/userContex'
 import { UserContexType } from '../../hooks/type'
+import { NavBar } from '../../navBar'
 
 
 const INITIAL_STATE = 0
@@ -77,8 +78,10 @@ export default function SearchResults() {
         <title >{title} | GiffApp</title>
         <meta name="description" content={title}></meta>
       </Helmet>
-        <Link  className="regis" to={"/"}>home</Link>
-        <SearchBar setGifs={setGifs} setLoading={setLoading} initalInput={input} initialRating={rating}/>
+        {/* <Link  className="regis" to={"/"}>home</Link>
+        <SearchBar setGifs={setGifs} setLoading={setLoading} initalInput={input} initialRating={rating}/> */}
+        <NavBar setGifs={setGifs} setLoading={setLoading} initalInput={input} initialRating={rating}/>
+        
         <h3 className='titleSearch'>{titlePage}</h3>
         <ListGifs gifs={gifs}/>
         {loading ? "":<Loading/>}
