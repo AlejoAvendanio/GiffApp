@@ -1,13 +1,10 @@
 .card{
-    /* border:solid 3px white; 
-    z-index: 1;
-    max-width: 280px;
-    margin-bottom: 1em; */
     position: relative;
-
     display: block;
     margin-bottom: .8em;
-    /* border-color: #fff; */
+}
+.card:hover{
+  opacity: .8;
 }
 .a{
     display: flex;
@@ -18,9 +15,10 @@
     object-fit: cover;
     z-index: 10;
     align-items: center;
-    /* border-color: #fff; */
     width: 100%;
 }
+
+
 
 
 
@@ -99,4 +97,28 @@
   }
   .categority span:hover{
     cursor: pointer;
+}
+
+
+@media (max-width: 600px) {
+  .card{
+      max-width:120px ;
+  }
+  .card:nth-child(5n + 1){
+    /* border:  solid 3px red ; */
+    outline: 3px solid rgb(52, 52, 255);
+  }
+
+  .card:nth-child(5n + 2)  {
+    outline: 3px solid rgb(252, 58, 252);
+  }
+  .card:nth-child(5n + 3)  {
+    outline: 3px solid rgb(71, 255, 80);
+  }
+  .card:nth-child(5n + 4)  {
+    outline: 3px solid rgb(255, 37, 37);
+  }
+  .card:nth-child(5n + 5) {
+    outline: 3px solid rgb(255, 251, 43);
+  }
 }

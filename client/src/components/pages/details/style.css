@@ -1,0 +1,16 @@
+.sectionRelevant{
+    display: flex;
+}
+
+.img{
+    z-index: 100;
+    position: absolute;
+    width: 60px;
+}
+
+.divrev{
+    display: flex;
+}
+.detail_title{
+    margin-left: 30px;
+}

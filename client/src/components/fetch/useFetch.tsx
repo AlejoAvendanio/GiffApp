@@ -40,7 +40,6 @@ export const getInfoById = ({id}:any)=>{
     return fetch(apiUrl)
     .then(res=>res.json())
     .then(res=>{
-        console.log(res.data)
         let gif = res.data
         gif = {
             title: gif.title,

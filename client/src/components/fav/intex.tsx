@@ -6,12 +6,21 @@ import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register/inex'
 import "./style.css"
 type FAVS =  {
-  id:string
+    id:string,
+    url:string,
+    title:string,
+    shared:string
 }
 
-const Fav:React.FC<FAVS> = ({id}:FAVS)=> {
+const Fav:React.FC<FAVS> = ({id,url,shared,title})=> {
   const {isLogged,fav, favs} = useUser()
   // const navigate = useNavigate()
+  const gif = {
+    id,
+    url,
+    shared,
+    title
+  }
   const [showModal,setShowModal] = useState(false) 
   const [type,setType] = useState("login")
   const handleSetTypeRegister = ()=>{
@@ -22,12 +31,14 @@ const Fav:React.FC<FAVS> = ({id}:FAVS)=> {
   }
   const handleClick = ()=>{
     if(!isLogged) return setShowModal(true)
-    fav(id)
+    fav(gif)
   }
   const handleClose = ()=>{
     setShowModal(false)
   }
-  const isFaved = favs?.some((favId:FAVS)=>favId.id===id)
+  const isFaved = favs?.some((favId:FAVS)=>{
+    return favId?.id===gif?.id
+  })
   const [
     label,
     emaji

@@ -14,6 +14,8 @@ import { getTrendingTerms } from '../../fetch/useFetch'
 import { Header } from '../../header/index';
 import emoji from "../../img/emoju.png"
 import "./style.css"
+import { useUser } from '../../hooks/useUser'
+import { Link } from 'react-router-dom'
 // console.log(process.on)
 
 
@@ -23,6 +25,7 @@ export const Home = () => {
   const [loading, setLoading] = useState<Boolean>(false)
   const title = gifs.length>0 ? "Home | GiffApp" : loading ? "" :"Cargando... | GiffApp"
   let lastSearch:any
+  const {isLogged} = useUser()
 
   useEffect(function(){
     setLoading(false)
@@ -35,16 +38,17 @@ export const Home = () => {
       throw new Error()
     }
   },[])
+
   lastSearch= window.localStorage.getItem("lastsearch")
   JSON.parse(lastSearch)
   
   return (
     <div>
-      <nav style={{display:"flex", justifyContent:"space-between" ,padding:"20px 40px"}}>
+      <nav className='divHome' style={{display:"flex", justifyContent:"space-between" ,padding:"20px 40px"}}>
         <div>
           <h1 className='h1' style={{ display:"flex"}}><img src={emoji} alt={"im"} width={50}/>Giffy clone</h1>
         </div>
-        <div style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
+        <div  className='divHome' style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
           <SearchBar 
           setGifs={setGifs} 
           setLoading={setLoading} 
@@ -57,6 +61,17 @@ export const Home = () => {
         <title>{title}</title>
         <meta name="description" content="Home GiffApp"></meta>
       </Helmet>
+
+    <section className='section_fav'>
+      {
+      isLogged ?
+      <Link to={"/favs"} className={"regis"}>
+          Favs
+      </Link>
+      :<></>
+      }
+    </section>
+
       {
         lastSearch?.length ?
         <LastSearchs/>

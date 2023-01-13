@@ -3,7 +3,7 @@ import axios from "axios";
 const ENDPOINT = "http://localhost:3002/users"
 
 
-export default async function addFav (id:string,jwt:string){
+export default async function addFav (gif:string,jwt:string){
   const token = jwt.slice(1,-1)  
     
         const config = {
@@ -11,7 +11,7 @@ export default async function addFav (id:string,jwt:string){
       baseURL: `${ENDPOINT}/favorite`,
       headers:{token:token},
       data: {
-        gif:{id:id},
+        gif,
       },
     };
     return await axios(config)

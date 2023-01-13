@@ -4,7 +4,6 @@ import { Loading } from '../loading'
 
 
 export default function ListGifs({gifs}:any) {
-  
   return (
     <>
       <div className='listGifs'>

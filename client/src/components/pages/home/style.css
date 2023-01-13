@@ -8,6 +8,7 @@
     -webkit-text-fill-color: transparent; 
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+    
 }
 
 .h2{
@@ -31,4 +32,27 @@
     -webkit-text-fill-color: transparent; 
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+}
+
+
+.section_fav{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.section_fav a {
+    height: auto;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+    .divHome{
+        display:"flex";
+        align-items:"center";
+        flex-direction: column;
+    }
+    
 }
