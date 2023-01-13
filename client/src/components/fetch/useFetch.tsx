@@ -10,7 +10,7 @@ export interface URL {
     url:string,
     id:string
 }
-const api_key = "7wJva7YAYuxRxDKhUNRaFiqEVnqqEOJo"
+export const api_key = "7wJva7YAYuxRxDKhUNRaFiqEVnqqEOJo"
 const URI = "https://api.giphy.com/v1/gifs/search"
 export default function UseFetch({keyword="" , page=0, limit=15, rating="g"}={}) {
     const apiURL = `${URI}?api_key=${api_key}&q=${keyword}&limit=${limit}&offset=${page*limit}&rating=${rating}&lang=es`

@@ -30,7 +30,7 @@ export default function Relevantes() {
   return (
     <div >{
         panda.length ? <div>
-        <h3 className='h2'>Mas relevantes</h3>
+        <h3 className='h2'>Top Trending</h3>
         <section style={{display:"flex",flexWrap:"wrap", justifyContent:"space-around"}}>
             <article className='article'>
                 <h3 className='h3'>{trends[1]}</h3>

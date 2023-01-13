@@ -4,6 +4,7 @@ import { UserContexType } from './type'
 import loginService from "../fetch/login"
 import addFav from '../fetch/addFavorite'
 import { getInfoById } from '../fetch/useFetch'
+import { UseRandom } from '../fetch/random'
 
 
 export const useUser = () => {
@@ -30,6 +31,11 @@ export const useUser = () => {
       })
     },[setJWT,logins])
 
+
+    // const random = useCallback((e:any)=>{
+    //   UseRandom().then((res)=>setRandom(res))
+      
+    // },[])
 
     const fav = useCallback((gif:any)=>{
       const token = window.sessionStorage.getItem("jwt") || ""

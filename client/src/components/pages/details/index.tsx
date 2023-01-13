@@ -8,30 +8,42 @@ import copy from "../../img/copiar.png"
 import {Helmet} from 'react-helmet'
 import ListGifs from '../../list/listOfGifs'
 import { Loading } from '../../loading'
+import { NavBar } from '../../navBar'
 export const Details = () => {
   const id = useParams()
   const [gifId, setGifId] = useState<GIF>()
   const [list, setList] = useState<string[]>([])
   const title = gifId ? gifId.title : "Cargando..."
   // useSEO({desciption:`Detail of ${title}`,title:title})
-    useEffect(()=>{
-      getInfoById(id).then(gif=>setGifId(gif))
+  const [loading, setLoading] = useState<Boolean>(false)
+  useEffect(()=>{
+    setLoading(false)
+      getInfoById(id).then(gif=>{
+        setLoading(true)
+        setGifId(gif)
+      })
       UseFetch({keyword:gifId?.title}).then((res)=>setList(res))
     },[id,list.length? "": list])
     console.log(list)
     console.log(gifId)
     const value= gifId?.shared
+
+
   return (
     <div>
       <Helmet>
         <title>{title} || GiffApp</title>
         <meta name="description" content={title}></meta>
       </Helmet>
-      <Link to={"/"} className="regis">home</Link>
+      {/* <Link to={"/"} className="regis">home</Link> */}
+      <NavBar setGifs ={setList} setLoading= {setLoading}/>
       <section className='sectionRelevant'>
         <div className='divrev'>
           <img className='card' src={gifId?.url} alt={gifId?.title}/>
-          <img src={copy} alt={copy} onClick={() => {navigator.clipboard.writeText(value ||"")}} className="img" ></img>
+          <img src={copy} alt={copy} onClick={() => {
+            navigator.clipboard.writeText(value ||"")
+            alert("copy")}}
+            className="img" ></img>
         </div>
         <div >
           <h1 className='h1 detail_title'>{gifId?.title}</h1>

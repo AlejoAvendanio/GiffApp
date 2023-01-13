@@ -36,14 +36,18 @@ export default function SearchBar({setGifs,setLoading,initalInput ="", initialRa
   }
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>)=>{
-    updateRating(e.target.value)
+    updateRating(e.target.value )
   }
 
   return (
     <div className='search'>
         <form onSubmit={(e)=>handleSubmit(e)}>
           <input type="text" onChange={(e)=>handleChance(e)} name={input} value={input}/>
-          <button className='searchButton'>search</button>
+          {
+          input ?
+          <button className='searchButton' style={{height:34, border:"none",marginLeft:3,width:61}}>search</button>
+          : <button className='searchButton' style={{height:34, border:"none",marginLeft:3,width:61, cursor:"not-allowed"}} disabled>search</button>  
+        }
         </form>
         <select value={rating} onChange={handleSelect}>
           
