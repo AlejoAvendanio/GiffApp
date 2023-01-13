@@ -1,11 +1,12 @@
-.article div img{
-    width: 400px;
-}
 .article{
-    background-color: rgb(56, 56, 56);
-    opacity: 1;
-    box-shadow: 0px 1px 10px rgba(255, 255, 255, 0.2);
-    transition: all ease .4s;
+  background-color: rgb(56, 56, 56);
+  opacity: 1;
+  box-shadow: 0px 1px 10px rgba(255, 255, 255, 0.2);
+  transition: all ease .4s;
+}
+.article div img {
+height: 350px;
+width: auto;
 }
 .article:hover{
     opacity: .8;
@@ -23,4 +24,19 @@
   }
   .article:nth-child(5n + 3)  {
     outline: 4px solid rgb(71, 255, 80);
+  }
+
+
+  .divRele{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 600px) {
+    .article{
+      margin-bottom: 20px;
+    }
+    .article div img {
+      max-width: 350px ;
+    }
   }

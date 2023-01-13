@@ -3,6 +3,7 @@ import Context from '../context/userContex'
 import { UserContexType } from './type'
 import loginService from "../fetch/login"
 import addFav from '../fetch/addFavorite'
+import { getInfoById } from '../fetch/useFetch'
 
 
 export const useUser = () => {
@@ -10,6 +11,8 @@ export const useUser = () => {
     const [state, setState] = useState({loading:false,
     error: false})
     const [logins, setLogins] = useState(false)
+    const [gifId,setGifId] = useState("")
+
     const login = useCallback((input:any)=>{
       setState({loading:true,error:false})
       return loginService(input)
@@ -28,20 +31,27 @@ export const useUser = () => {
     },[setJWT,logins])
 
 
-    const fav = useCallback((id:any)=>{
+    const fav = useCallback((gif:any)=>{
       const token = window.sessionStorage.getItem("jwt") || ""
-      addFav(id,token)
+      console.log(gif)
+      addFav(gif,token)
         .then((res:any)=>{
           setFav(res)
+          window.localStorage.setItem("favs",JSON.stringify(favs))
         })
         .catch((e:any)=>console.error(e))
-    },[setFav]) 
-
+    },[setFav,favs]) 
 
     const logout = useCallback(()=>{
       window.sessionStorage.removeItem("jwt")
       setJWT("")
     },[setJWT])
+
+
+    const detailFunction = useCallback((id:string)=>{
+      getInfoById(id).then(gif=>setGifId(gif))
+    },[]
+    )
 
   return {
     isLogged:Boolean(jwt),
@@ -50,6 +60,8 @@ export const useUser = () => {
     login,
     logout,
     fav,
-    favs
+    favs,
+    gifId,
+    detailFunction
   }
 }

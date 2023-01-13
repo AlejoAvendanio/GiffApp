@@ -8,9 +8,11 @@ export const LastSearchs = () => {
 
   let lastSearchName:any= window.localStorage.getItem("lastSearchName")
   lastSearchName= JSON.stringify(lastSearchName).slice(1,-1)
-  console.log(lastSearchName)
+  // console.log(lastSearchName)
   return <div>
     <h3 className='h2'>Last Serch: {lastSearchName}</h3>
-    <ListGifs gifs={lastSearch}/>
+    <div >
+      <ListGifs gifs={lastSearch}/> 
+    </div>
   </div>
 }

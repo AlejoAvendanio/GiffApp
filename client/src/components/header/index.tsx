@@ -12,10 +12,11 @@ export const Header = () => {
     <header>
     {
         isLogged
-        ?
-        <button className='regis' onClick={handleClick}>
-            Logout
-        </button>
+        ?<>
+          <button className='regis' onClick={handleClick}>
+              Logout
+          </button>
+        </>
         :<>
           <Link to="/login" className='regis'>
               Login
