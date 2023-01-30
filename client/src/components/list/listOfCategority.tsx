@@ -9,13 +9,13 @@ export default function TrendingSerches() {
     
     useEffect(()=>{
         getTrendingTerms().then(res=>setTrends(res))
-    })
+    },[setTrends])
   return (
     <div>
         <h3 className='h2'>Trending Giff</h3>
     <div className='divListCategority'>
     {
-        trends?.map((e:any)=><CategorityTrending ranking={"g"} categority={e}/>)
+        trends?.map((e:any,i:number)=><CategorityTrending key={i} ranking={"g"} categority={e}/>)
     }
   </div>
   </div>

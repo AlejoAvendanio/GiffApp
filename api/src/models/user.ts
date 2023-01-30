@@ -6,6 +6,7 @@ export interface Iuser extends Document {
     favorites?:string[],
     image?:string,
     password:string,
+    chat:string[],
     encryptPassword(password:string):Promise<string>,
     validatePassword(password:string):Promise<boolean>
 }
@@ -26,7 +27,8 @@ const userSchema = new Schema({
     image:{
         type:String,
         required:false
-    }
+    },
+    chats:[]
 })
 
 userSchema.methods.encryptPassword = async (password: string):Promise<string> =>{
@@ -39,5 +41,5 @@ userSchema.methods.validatePassword =async function(password:string):Promise<boo
 }
 
 
-const User = model<Iuser>('Users', userSchema);
+const User = model<Iuser>('User', userSchema);
 module.exports = User

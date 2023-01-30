@@ -5,7 +5,7 @@ const router = Router()
 
 router.post("/register",postRegister)
 router.post("/login",postLogin)
-router.get("/",getUsers)
+router.post("/",tokenValidation,getUsers)
 
 router.post("/favorite",tokenValidation,addFavorite)
 router.get("/favorite",tokenValidation,getFavs)

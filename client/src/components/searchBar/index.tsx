@@ -45,8 +45,8 @@ export default function SearchBar({setGifs,setLoading,initalInput ="", initialRa
           <input type="text" onChange={(e)=>handleChance(e)} name={input} value={input}/>
           {
           input ?
-          <button className='searchButton' style={{height:34, border:"none",marginLeft:3,width:61}}>search</button>
-          : <button className='searchButton' style={{height:34, border:"none",marginLeft:3,width:61, cursor:"not-allowed"}} disabled>search</button>  
+          <button className='searchButton' style={{height:34, border:"none",marginLeft:3,width:61}}>Search</button>
+          : <button className='searchButton' style={{height:34, border:"none",marginLeft:3,width:61, cursor:"not-allowed"}} disabled>Search</button>  
         }
         </form>
         <select value={rating} onChange={handleSelect}>

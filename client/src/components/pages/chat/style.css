@@ -1,0 +1,102 @@
+.message{
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 14px;
+    min-width: 80px;
+    max-width: 200px;
+    min-height: 20px;
+    max-height: auto;
+    padding: 0 10px 13px 10px;
+}
+.message-from{
+    text-decoration: none;
+    margin: 3px;
+}
+.chat-list-ul{
+    margin: none;
+    padding: 0;
+}
+
+.message-from-me{
+    margin-right: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.message-from-friend{
+    margin-left: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+.chat-container-message{
+    height: 266px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-image: url("../../img/fondowp.jpg") ;
+    background-size: 100%;
+    
+}
+.chat-from-container{
+    background: #202c33;
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+}
+.chat-from-container input{
+padding: 4px;
+border: solid 1px  #111b21;
+border-radius: 10px;
+background-color: #111b21;
+color: aliceblue;
+margin-left: 10px;
+}
+
+.chat-from-container input:focus{
+    padding: 4px;
+    border: solid 1px  #111b21;
+    border-radius: 10px;
+    background-color: #111b21;
+    color: aliceblue;
+    }
+
+.chat-from-container button{
+    margin-right: 10px;
+    font-size: 20px;
+    border:2px black ;
+    background: transparent;
+    border-radius:100% ;
+    transform: rotate(90deg);
+}
+.chat-from-container button:hover{
+    margin-right: 10px;
+    font-size: 20px;
+    border-radius:100% ;
+    border:#c3c3c3 ;
+    color: #c3c3c3;
+}
+
+.date{
+    position: absolute;
+    right: 10px;
+    font-size: 10px;
+    bottom: -8px;
+
+}
+
+.mi-scroll::-webkit-scrollbar {
+    width: 0.2em;
+    background-color: #a1a1a1a4;
+}
+
+.mi-scroll::-webkit-scrollbar-thumb {
+    background-color: #202c33;
+}
+
+.mi-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #9E9E9E;
+}
+
+.mi-scroll::-webkit-scrollbar-thumb:active {
+    background-color: #9E9E9E;
+}

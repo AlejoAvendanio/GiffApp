@@ -19,6 +19,7 @@ export const useUser = () => {
       return loginService(input)
       .then(res=>{
         window.sessionStorage.setItem("jwt",JSON.stringify(res))
+        localStorage.setItem("user",input)
         setState({loading:false,error:false})
         setJWT(res.token)
         setLogins(logins)
@@ -26,6 +27,7 @@ export const useUser = () => {
       })
       .catch(err=>{
         window.sessionStorage.removeItem("jwt")
+        localStorage.removeItem("user")
         setState({loading:false,error:true})
         console.error(err)
       })

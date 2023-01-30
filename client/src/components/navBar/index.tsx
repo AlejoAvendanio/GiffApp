@@ -7,7 +7,7 @@ export const NavBar = ({setGifs,setLoading,initalInput ="", initialRating="g"}:a
   return (
     <nav className='divHome' style={{display:"flex", justifyContent:"space-between" ,padding:"20px 40px"}}>
         <div>
-          <Link style={{textDecoration:"none"}} to={"/"}><h1 className='h1' style={{ display:"flex"}}><img src={emoji} alt={"im"} width={50}/>Giffy clone</h1></Link>
+          <Link style={{textDecoration:"none"}} to={"/"}><h1 className='h1' style={{ display:"flex"}}><img src={emoji} alt={"im"} width={50}/>Giphy clone</h1></Link>
         </div>
         <div  className='divHome' style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
           <SearchBar 
@@ -16,7 +16,7 @@ export const NavBar = ({setGifs,setLoading,initalInput ="", initialRating="g"}:a
           initalInput={initalInput} 
           initialRating={"g" || initialRating}/>
           <Header/>
-        </div>
+        </div> 
       </nav>
   )
 }
