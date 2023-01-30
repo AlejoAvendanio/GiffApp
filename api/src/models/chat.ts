@@ -1,15 +1,20 @@
 import mongoose, { Document, model, ObjectId, Schema } from "mongoose";
 export interface Ichat extends Document {
-    name:string,
     isGroupChat:boolean,
     users:string[],
-    latesMessahes:ObjectId,
-    groupAdmin:ObjectId
+    latesMessages?:ObjectId,
+    groupAdmin?:ObjectId,
+    friend1?:string,
+    friend2?:string
 }
 const chatSchema = new Schema({
-    chatName:{
+    friend1:{
         type:String,
-        required:true
+        required:false
+    },
+    friend2:{
+        type:String,
+        required:false
     },
     isGroupChat:{
         type:Boolean,
@@ -19,7 +24,7 @@ const chatSchema = new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],
-    latesMessahes:{
+    latesMessages:{
         type:mongoose.Schema.Types.ObjectId,
         ref: "Message"
     },

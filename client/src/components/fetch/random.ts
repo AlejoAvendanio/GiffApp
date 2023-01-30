@@ -8,7 +8,6 @@ export function UseRandom() {
             return res.json()
         })
         .then(res=>{
-            console.log(res.data.title)
             return res.data.title})
 }
 

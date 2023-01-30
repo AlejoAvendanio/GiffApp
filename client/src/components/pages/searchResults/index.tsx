@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState,useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import UseFetch from '../../fetch/useFetch'
-import ListGifs from '../../list/listOfGifs'
+import ListGifs, { Gifs } from '../../list/listOfGifs'
 import {Helmet} from 'react-helmet'
 import { Loading } from '../../loading'
 import SearchBar from '../../searchBar'
@@ -18,7 +18,11 @@ export default function SearchResults() {
   
     const { input,rating} = useParams()
 
-    const [gifs, setGifs] = useState<string[]>([])
+    const [gifs, setGifs] = useState<Gifs[]>([{
+      id:"",
+      title:"",
+      url:""
+    }])
 
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -35,7 +39,7 @@ export default function SearchResults() {
     : "Cargando..."
 
     useEffect(()=>{
-        UseFetch({keyword:input,rating:rating}).then(res=>setGifs(res))
+        UseFetch({keyword:input,rating:rating}).then((res:Gifs[])=>setGifs(res))
         window.localStorage.setItem("lastSearchName",input || "")
     },[input, rating])
 

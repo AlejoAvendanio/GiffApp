@@ -1,14 +1,12 @@
-import mongoose, { Document, model, ObjectId, Schema, Types } from "mongoose";
+import { Document, model, ObjectId, Schema } from "mongoose";
 export interface Imessage extends Document {
-    name:string,
-    isGroupChat:boolean,
-    users:string[],
-    latesMessahes:ObjectId,
-    groupAdmin:ObjectId
+    content:string,
+    sander:string,
+    chat:ObjectId
 }
 const messageSchema = new Schema({
     sander:{
-        type:Types.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:"User"
     },
     content: {
@@ -16,7 +14,7 @@ const messageSchema = new Schema({
         trim:true
     },
     chat:{
-        type:Types.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:"Chat"
     }
 }

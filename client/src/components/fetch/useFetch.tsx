@@ -1,3 +1,4 @@
+import axios from "axios"
 
 export interface URL {
     keyword:string,
@@ -67,9 +68,8 @@ export const getRandomGif = ({keyword=""}={})=>{
 
 
 
-export const getTrendingTerms = ()=>{
+export const getTrendingTerms =async ()=>{
     const apiUrl = `https://api.giphy.com/v1/trending/searches?api_key=${api_key}`
-    return fetch(apiUrl)
-    .then(res=>res.json())
-    .then(res=>res.data); 
+    const {data} =  await axios(apiUrl)
+    return data.data
 }

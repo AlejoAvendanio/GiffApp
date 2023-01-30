@@ -38,3 +38,34 @@
 .searchButton:hover{  
     background-position:10px;  
 } 
+
+
+.span_chat:hover{
+    background-color: #bbb;
+    cursor: pointer;
+}
+
+.span_name{
+    margin-top: 30px;
+    width: 80%;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px #ccc solid;
+    box-shadow: #bbb;
+}
+.span_name:hover{
+    background-color: rgba(187, 187, 187, 0.342);
+    border-radius: 10px 10px 0 0;
+}
+
+.chats{
+    /* height: 266px; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}

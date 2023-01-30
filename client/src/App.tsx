@@ -20,7 +20,6 @@ function App() {
             <Route path="/" element={<Home/>}></Route>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
-            <Route path='/chat' element={<Chat/>}/>
             <Route path='/favs' element={<FavoritePage/>}/>
           </Routes>
         </BrowserRouter>

@@ -1,3 +1,5 @@
+import { Gifs } from "../list/listOfGifs"
+
 export type User = {
     id:string,
     name:string,
@@ -9,9 +11,15 @@ export type UserContexType ={
     lastSearch:string[],
     trends:string[],
     lastSearchName:string,
+    chats:[],
+    chatSelected:string,
+    chatInfo:any
+    setChatInfo:(value:any)=>void
+    setChatSelected:(value:string | null)=>void
+    setChats:(value:string[])=>void,
     setLastSearchName:(value:string)=>void,
     setTrends:(value:string[])=>void,
     setJWT: (value:string)=>void,
     setFav:(value:string[])=>void,
-    setLastSearch:(value:string[])=>void
+    setLastSearch:(value:Gifs[])=>void
 }

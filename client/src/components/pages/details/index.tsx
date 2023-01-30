@@ -6,13 +6,13 @@ import {GIF} from "../../fetch/useFetch"
 import "./style.css"
 import copy from "../../img/copiar.png"
 import {Helmet} from 'react-helmet'
-import ListGifs from '../../list/listOfGifs'
+import ListGifs, { Gifs } from '../../list/listOfGifs'
 import { Loading } from '../../loading'
 import { NavBar } from '../../navBar'
 export const Details = () => {
   const id = useParams()
   const [gifId, setGifId] = useState<GIF>()
-  const [list, setList] = useState<string[]>([])
+  const [list, setList] = useState<Gifs[]>([])
   const title = gifId ? gifId.title : "Cargando..."
   // useSEO({desciption:`Detail of ${title}`,title:title})
   const [loading, setLoading] = useState<Boolean>(false)

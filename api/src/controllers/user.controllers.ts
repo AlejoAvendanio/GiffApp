@@ -1,9 +1,19 @@
 import "dotenv/config"
-import e, { Request, Response } from "express";
+import { Request, Response } from "express";
 const userSchema = require("../models/user")
 import jwt from 'jsonwebtoken';
+import { ObjectId } from "mongoose";
 import { Iuser } from "../models/user";
 
+
+interface User {
+    id:ObjectId,
+    name:string,
+    email:string,
+    password:string,
+    favorites:string[],
+    __v:number
+}
 
 interface favorite {
     id:string
@@ -12,14 +22,13 @@ interface favorite {
 
 export const postRegister = async (req: Request, res:Response)=>{
     const {name, email, image, password, favorites} = req.body
-    const users =await userSchema.findOne({email})
+    const users:User =await userSchema.findOne({email})
     const user: Iuser = await new userSchema();
     try{
         if(users){
             return res.status(400).send("email en uso")
         }else{
             if(!name){
-                console.log("reasd")
                 return res.status(401).send("name")
             }else if(!email){
                 return res.status(402).send("email")
@@ -62,7 +71,6 @@ export const addFavorite= async (req: Request, res:Response)=>{
     const {email} = user
     try{
         const user = await userSchema.findOne({email})
-        console.log(user.favorites)
         if(!user.favorites.some((e:favorite)=>e.id===gif.id)){
             user.favorites.push(gif)
         }else{
@@ -76,13 +84,24 @@ export const addFavorite= async (req: Request, res:Response)=>{
 }
 
 
-export const getUsers =async (_req: Request, res:Response)=>{
-    const users = await userSchema.find({})
-    res.status(200).send(users)
+export const getUsers =async (req: Request, res:Response)=>{
+    const {name}:any = req.body ? 
+    {
+        name:{$regex:req.body.name}
+    }:{}
+
+    if(name){
+        const users = await userSchema.find({name}).find({_id:{$ne:req.user._id}})
+        const inf = users.map((e:User)=>{return{name:e.name,id:e.id}})
+        res.status(200).send(inf)
+    }else{
+        const users = await userSchema.find({})
+        const inf = users.map((e:User)=>{return{name:e.name,id:e.id}})
+        res.status(200).send(inf)
+    }
 }
 
 export const postLogin = async (req: Request, res:Response)=>{
-    console.log(req.body)
     const {email, password } = req.body
     const user = await userSchema.findOne({email})
     if(!user) return res.status(401).send("invalid user or password")
