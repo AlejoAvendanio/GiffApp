@@ -1,7 +1,4 @@
 import { Request, Response } from "express";
-import { Ichat } from "../models/chat";
-
-const { emitSocket } = require ("../Socket");
 const userSchema = require("../models/user")
 const chatSchema = require("../models/chat")
 

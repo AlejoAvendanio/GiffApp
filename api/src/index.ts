@@ -7,19 +7,13 @@ import messages from "./routes/messages.routes"
 import "./database";
 import http from "http";
 import cors from "cors"
-
-
-
-
-
+import { Server } from "socket.io";
 const PORT = process.env.PORT || 3001
-
-
-
 const app = express()
 const server = http.createServer(app);
 const httpServer=server.listen(PORT)
-const io = require("socket.io")(httpServer,{
+
+const io = new Server(httpServer,{
 	pingTimeout:60000,
 	cors:{
 		origin:"http://localhost:3000"
@@ -70,7 +64,7 @@ app.use("/chat",chat)
 app.use("/messages",messages)
 
 app.get("/",(req,res)=>{
-	res.send({msg:"holis"})
+	res.send({msg:"holis esta funcionando???"})
 })
 
 
