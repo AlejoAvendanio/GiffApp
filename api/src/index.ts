@@ -64,7 +64,7 @@ app.use("/chat",chat)
 app.use("/messages",messages)
 
 app.get("/",(req,res)=>{
-	res.send({msg:"holis"})
+	res.send({msg:"holis esta funcionando???"})
 })
 
 
