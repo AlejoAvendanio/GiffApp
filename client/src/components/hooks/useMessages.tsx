@@ -12,13 +12,12 @@ export const useMessages = () => {
     error: false})
     const [dataNewMessage,setDataNewMessage] = useState("")
 
-    const sendMessage = useCallback((info:any,id:string)=>{
+    const sendMessage = useCallback((info:string,id:string)=>{
         setState({loading:true,error:false})
         return postMessages(jwt,id,info)
             .then(res=>{
                 setState({loading:false,error:false})
                 setDataNewMessage(res)
-                console.log(res)
                 return res
             })
             .catch(err=>{
@@ -34,7 +33,6 @@ export const useMessages = () => {
             .then(res=>{
                 setState({loading:false,error:false})
                 setMessages(res)
-                console.log(res)
                 return res
             })
             .catch(err=>{

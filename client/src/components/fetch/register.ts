@@ -2,8 +2,12 @@ import axios from "axios";
 
 const ENDPOINT = "http://localhost:3002/users"
 
-
-export default async function register (input:any){
+type Register = {
+  email:string,
+  password:string,
+  name:string
+}
+export default async function register (input:Register){
     const {email,name,password} = input
         const config = {
             method: "POST",

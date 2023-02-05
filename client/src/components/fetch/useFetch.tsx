@@ -34,9 +34,11 @@ export interface GIF{
     url?:string
 }
 
+export type searchId={
+    id:string
+}
 
-export const getInfoById = ({id}:any)=>{
-    console.log(id)
+export const getInfoById = ({id}:searchId)=>{
     const apiUrl = `https://api.giphy.com/v1/gifs/${id}?api_key=${api_key}`
     return fetch(apiUrl)
     .then(res=>res.json())
@@ -63,7 +65,6 @@ export const getRandomGif = ({keyword=""}={})=>{
         }})
         return gifs
     }); 
-
 }
 
 

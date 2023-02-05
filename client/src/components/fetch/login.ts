@@ -2,8 +2,11 @@ import axios from "axios";
 
 const ENDPOINT = "http://localhost:3002/users"
 
-
-export default async function login (input:any){
+export type user = {
+  email:string,
+  password:string
+}
+export default async function login (input:user){
         const config = {
             method: "POST",
       baseURL: `${ENDPOINT}/login`,

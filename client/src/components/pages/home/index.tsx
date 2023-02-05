@@ -25,7 +25,6 @@ export const Home = () => {
   const [openChat2, setOpenChat2] = useState<boolean>(false)
   const {getAllMessages}= useMessages()
   const {currentChat, chatInfo,allChats,chatSelected,setChatSelected,setChatInfo} = useChat()
-  // const {lastSearch} = useContext(Context) as UserContexType
   const [loading, setLoading] = useState<Boolean>(false)
   const title = gifs.length>0 ? "Home | GiffApp" : loading ? "" :"Cargando... | GiffApp"
   let lastSearch:any
@@ -51,7 +50,7 @@ export const Home = () => {
     }catch(e){
       throw new Error()
     }
-  },[randoms])
+  },[randoms,setRandom])
 
   const handleChat = ()=>{
     setOpenChat(!openChat)
@@ -62,9 +61,8 @@ export const Home = () => {
     //buscar info del chat 
     getAllMessages(chatSelected)
     currentChat(chatSelected).then(res=>setChatInfo(res))
-
   }
-  lastSearch= window.localStorage.getItem("lastsearch")
+  lastSearch = window.localStorage.getItem("lastsearch")
   JSON.parse(lastSearch)
   const tittle:string = randoms.split(" ").slice(0,2).join(" ")
   return (

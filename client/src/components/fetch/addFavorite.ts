@@ -1,9 +1,11 @@
 import axios from "axios";
+import { Favorite } from "../hooks/useUser";
 
 const ENDPOINT = "http://localhost:3002/users"
 
 
-export default async function addFav (gif:string,jwt:string){
+
+export default async function addFav (gif:Favorite,jwt:string){
   const token = jwt.slice(1,-1)  
     
     const config = {
