@@ -72,7 +72,7 @@ export const Chat = ({handleChat2}) => {
         const token = jwt.slice(1,-1)  
         const config = {
           method: "post",
-          baseURL: `http://localhost:3002/messages`,
+          baseURL: `https://giffapp-production.up.railway.app/messages`,
           headers:{token:token},
           data:{id:chatSelected,content:newMessage.content}
         }
