@@ -9,6 +9,9 @@ import {
 
 let io: ServerType;
 
+
+
+
 export default function init(httpServer: any) {
 	io = new Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>(
 		httpServer,
