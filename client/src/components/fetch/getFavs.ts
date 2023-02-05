@@ -1,14 +1,15 @@
 
 import axios from "axios";
+import { ENDPOINT } from "./addFavorite";
 
-const ENDPOINT = "http://localhost:3002/users"
+
 
 export default async function getFavs (jwt:string){  
   const token = jwt.slice(1,-1)  
   console.log(token)
     const config = {
             method: "get",
-      baseURL: `${ENDPOINT}/favorite`,
+      baseURL: `${ENDPOINT}/users/favorite`,
       headers:{token:token},
     };
     return await axios(config)

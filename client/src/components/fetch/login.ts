@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const ENDPOINT = "http://localhost:3002/users"
+import { ENDPOINT } from "./addFavorite";
+
 
 export type user = {
   email:string,
@@ -9,7 +10,7 @@ export type user = {
 export default async function login (input:user){
         const config = {
             method: "POST",
-      baseURL: `${ENDPOINT}/login`,
+      baseURL: `${ENDPOINT}/users/login`,
       data: {
         email: input.email,
         password:input.password

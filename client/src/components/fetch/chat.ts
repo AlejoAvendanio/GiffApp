@@ -1,12 +1,12 @@
 import axios from "axios"
 
-
+import { ENDPOINT } from "./addFavorite";
 
 export const searchFriendsChat = async (name:string,jwt:string)=>{
     const token = jwt.slice(1,-1)  
     const config = {
         method: "POST",
-        baseURL: `http://localhost:3002/users`,
+        baseURL: `${ENDPOINT}/users`,
         headers:{token:token},
         data:{
             name,
@@ -22,7 +22,7 @@ export const createChatFetch = async (id:string,jwt:string)=>{
     const token = jwt.slice(1,-1)  
     const config = {
         method: "POST",
-        baseURL: `http://localhost:3002/chat`,
+        baseURL: `${ENDPOINT}/chat`,
         headers:{token:token},
         data:{
             id,
@@ -38,7 +38,7 @@ export const getChatsUser = async (jwt:string)=>{
     const token = jwt.slice(1,-1)  
     const config = {
         method: "get",
-        baseURL: `http://localhost:3002/chat`,
+        baseURL: `${ENDPOINT}/chat`,
         headers:{token:token}
     }
     const {data} = await axios(config)
@@ -49,7 +49,7 @@ export const getChatById = async(jwt:string,id:string)=>{
     const token = jwt.slice(1,-1)  
     const config = {
         method: "post",
-        baseURL: `http://localhost:3002/chat/chatById`,
+        baseURL: `${ENDPOINT}/chat/chatById`,
         headers:{token:token},
         data:{id}
     }

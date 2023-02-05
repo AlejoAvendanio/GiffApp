@@ -34,7 +34,7 @@ export const Chat = ({handleChat2}) => {
   
 
   useEffect(()=>{
-    socket =io("http://localhost:3002")
+    socket =io("https://giffapp-production.up.railway.app")
     socket.emit("setup",name)
     socket.on("conected",()=>setSocketConnection(true))
     socket.on("typing",(data)=>{

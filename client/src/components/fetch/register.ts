@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const ENDPOINT = "http://localhost:3002/users"
+import { ENDPOINT } from "./addFavorite";
+
 
 type Register = {
   email:string,
@@ -11,7 +12,7 @@ export default async function register (input:Register){
     const {email,name,password} = input
         const config = {
             method: "POST",
-      baseURL: `${ENDPOINT}/register`,
+      baseURL: `${ENDPOINT}/users/register`,
       data: {
         email,
         name,

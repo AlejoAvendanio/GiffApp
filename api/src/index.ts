@@ -16,7 +16,7 @@ const httpServer=server.listen(PORT)
 const io = new Server(httpServer,{
 	pingTimeout:60000,
 	cors:{
-		origin:"http://localhost:3000"
+		origin:"https://giffy-cyan-six.vercel.app"
 	}
 })
 io.on("connection",(socket)=>{
