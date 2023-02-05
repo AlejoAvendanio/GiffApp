@@ -1,10 +1,11 @@
 import axios from "axios"
+import { ENDPOINT } from "./addFavorite";
 
 export const postMessages = async(jwt:string,id:string,info:string)=>{
     const token = jwt.slice(1,-1)  
     const config = {
         method: "post",
-        baseURL: `http://localhost:3002/messages`,
+        baseURL: `${ENDPOINT}/messages`,
         headers:{token:token},
         data:{id,content:info}
     }
@@ -16,7 +17,7 @@ export const allMessages = async (jwt:string,chatID:string)=>{
     const token = jwt.slice(1,-1)  
     const config = {
         method: "post",
-        baseURL: `http://localhost:3002/messages/allMessages`,
+        baseURL: `${ENDPOINT}/messages/allMessages`,
         headers:{token:token},
         data:{chatID}
     }

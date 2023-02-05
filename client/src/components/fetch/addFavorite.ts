@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Favorite } from "../hooks/useUser";
 
-const ENDPOINT = "http://localhost:3002/users"
+export const ENDPOINT = "https://giffy-cyan-six.vercel.app"
 
 
 
@@ -10,7 +10,7 @@ export default async function addFav (gif:Favorite,jwt:string){
     
     const config = {
       method: "POST",
-      baseURL: `${ENDPOINT}/favorite`,
+      baseURL: `${ENDPOINT}/users/favorite`,
       headers:{token:token},
       data: {
         gif,
