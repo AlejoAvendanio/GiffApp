@@ -11,7 +11,7 @@ export const useChat = () => {
     error: false})
     const [friend,setFriend] = useState<Friend[]>([])
 
-    const fetchFriendChat = useCallback((input:any)=>{
+    const fetchFriendChat = useCallback((input:string)=>{
         setState({loading:true,error:false})
         return searchFriendsChat(input,jwt)
             .then(res=>{

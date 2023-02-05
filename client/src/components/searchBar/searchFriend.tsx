@@ -11,21 +11,21 @@ export interface Friend {
 export const SearchFriend = () => {
     const {fetchFriendChat, friend, createChat,chats,setChatSelected,currentChat,setChatInfo,allChats} = useChat()
     const [input, setInput] = useState("")
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>):void=>{
         e.preventDefault()
         setInput(e.target.value)
         fetchFriendChat(input)
     }
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>):void=>{
         e.preventDefault()
         allChats()
     }
-    const handleSelectChat = (e:any)=>{
+    const handleSelectChat = (e:string):void=>{
         setChatSelected(e)
         //info del chat
         currentChat(e)
     }
-    const createChats = (e: any):any=>{
+    const createChats = (e: string):void=>{
     createChat(e).then(res=>setChatInfo(res))
     allChats()
     }

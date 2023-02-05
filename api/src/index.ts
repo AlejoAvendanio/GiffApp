@@ -47,18 +47,15 @@ io.on("connection",(socket)=>{
 		if(!chat.users) return console.log("chat.users not defined")
 		
 		chat.users.forEach(user => {
-			console.log("user id",user._id)
-			console.log("sander id", newMessageRecived.sander._id)
-			console.log(user._id == newMessageRecived.sander._id)
 			if(user._id == newMessageRecived.sander._id) return
 			socket.to(chat._id).emit("message recived",newMessageRecived)
 		});
 	})
 
 
-	socket.on("typing",(room:string)=>socket.in(room).emit("typing"))
-	socket.on("stop typing",(room:string)=>socket.in(room).emit("stop typing"))
-	
+	socket.on("typing",(room:string,name:string)=>socket.to(room).emit("typing",name))
+	socket.on("stop typing",(room:string)=>socket.to(room).emit("stop typing"))
+
 
 	socket.off("setup",(data)=>{
 		console.log("disconect")
@@ -72,7 +69,9 @@ app.use("/users",users)
 app.use("/chat",chat)
 app.use("/messages",messages)
 
-
+app.get("/",(req,res)=>{
+	res.send({msg:"holis"})
+})
 
 
 console.log("server port "+ PORT)

@@ -1,3 +1,3 @@
 export const mongodb = {
-    "URI":"mongodb://localhost:27017/appGif"
+    "URI":"mongodb+srv://alejo:alejo123@giphyclone.zipjpbo.mongodb.net/?retryWrites=true&w=majority"
 }

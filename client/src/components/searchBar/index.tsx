@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Gifs } from '../list/listOfGifs'
 
 
 
@@ -11,8 +12,8 @@ const RATINGS = ["g", "pg", "pg-13", "r"]
 
 
 export interface info {
-  setGifs:any,
-  setLoading: any,
+  setGifs:(value:Gifs[])=>void,
+  setLoading: (value:boolean)=>void,
   initalInput?:string,
   initialRating?:string,
 }
@@ -31,7 +32,7 @@ export default function SearchBar({setGifs,setLoading,initalInput ="", initialRa
   const handleSubmit =(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     setLoading(false)
-    setGifs("")
+    setGifs([])
     navegate(`/search/${input}/${rating}`)
   }
 

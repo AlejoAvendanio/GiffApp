@@ -4,7 +4,7 @@ import { useChat } from "../../hooks/useChat";
 import { useMessages } from "../../hooks/useMessages";
 import axios from "axios";
 import "./style.css"
-
+import ScrollToBottom from "../../../scroll";
 let socket 
 let selectedChatCompare
 const name = window.localStorage.getItem("name")
@@ -12,22 +12,39 @@ const name = window.localStorage.getItem("name")
 
 export const Chat = ({handleChat2}) => {
   const [message, setMessage] = useState();
+  const [messages, setMessages] = useState([]);
   const {jwt, chatSelected,chatInfo } =useChat()
-  const { sendMessage,getAllMessages,messages,setMessages } = useMessages()
+  const { sendMessage,getAllMessages } = useMessages()
   const [typing,setTyping] = useState(false)
   const [isTyping,setIsTyping] = useState(false)
   const [socketConnection,setSocketConnection]= useState(false)
-  const messagesSection = document.getElementById("messages");
   const ref = useRef();
   const positionRef = useRef();
+  const [typper,setTypper] = useState(null)
+  const [scrollTarget, setScrollTarget] = useState(null);
+
+  // scroll
+  useEffect(() => {
+    if (scrollTarget) {
+      scrollTarget.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [scrollTarget]);
+
   //conecto a la sala
+  
 
   useEffect(()=>{
     socket =io("http://localhost:3002")
     socket.emit("setup",name)
     socket.on("conected",()=>setSocketConnection(true))
-    socket.on("typing",()=>setIsTyping(true))
-    socket.on("stop typing",()=>setIsTyping(false))
+    socket.on("typing",(data)=>{
+      setIsTyping(true)
+      setTypper(data)
+      console.log(data)
+  })
+    socket.on("stop typing",()=>{setIsTyping(false)
+    setTypper(null)
+    })
   },[])
 
 
@@ -62,13 +79,9 @@ export const Chat = ({handleChat2}) => {
         const {data} = await axios(config)
         socket.emit("stop typing", chatSelected)
         socket.emit("new message",data)
+        getAllMessages(chatSelected).then(res=>setMessages(res))
         // Hacer scroll automáticamente hacia abajo hasta el último mensaje
-        if(ref.current && messages.length){
-        messagesSection.scrollTop = messagesSection.scrollHeight;
-        positionRef.current.scrollIntoView();
-      }
         setMessage("")
-        setMessages([...messages,newMessage ]);
       }
 
       const typingHandler = (e) =>{
@@ -76,7 +89,7 @@ export const Chat = ({handleChat2}) => {
         if(!socketConnection) return
         if(!typing) {
           setTyping(true)
-          socket.emit("typing",chatSelected)
+          socket.emit("typing",chatSelected,name)
         }
         let lastTypingTime = new Date().getTime()
         let timerLength = 3000
@@ -114,9 +127,11 @@ export const Chat = ({handleChat2}) => {
 
           }
         {
-          isTyping
-          ? <p style={{margin:"0 0 0 10px",color:"#c3c3c3",display:"flex"}}>typing...</p>
-          : <></>
+          typper?
+          typper === name
+          ?<></>
+          : <p style={{margin:"0 0 0 10px",color:"#c3c3c3",display:"flex"}}>typing...</p>
+          :<></>
         }
         </header>
       
@@ -124,7 +139,6 @@ export const Chat = ({handleChat2}) => {
           <ul className="chat-list-ul" style={{display:"flex",flexDirection:"column"}} >
             {messages.map((message, i) => {
               let today = new Date(message.createdAt)
-
               return(
               <li
                 key={i}
@@ -139,6 +153,11 @@ export const Chat = ({handleChat2}) => {
                 <span className="message" style={{background:"#176b5b", display:"flex",position:"relative"}}>
                   <p style={{margin:0, display:"flex",textAlign:"start"}}>{message?.content}</p>
                   <p className="date">{`${today.getHours()}:${today.getMinutes()}`}</p>
+                  {
+                    i === messages.length-1 && (
+                      <div ref={(el)=>setScrollTarget(el)}/>
+                    )
+                  }
                 </span>
                 :
                 <span className="message" style={{background:"#343f46",position:"relative",display:"flex",flexDirection:"column"}}>

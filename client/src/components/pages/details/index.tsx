@@ -9,8 +9,9 @@ import {Helmet} from 'react-helmet'
 import ListGifs, { Gifs } from '../../list/listOfGifs'
 import { Loading } from '../../loading'
 import { NavBar } from '../../navBar'
+import { searchId } from '../../fetch/useFetch'
 export const Details = () => {
-  const id = useParams()
+  const id:any = useParams()
   const [gifId, setGifId] = useState<GIF>()
   const [list, setList] = useState<Gifs[]>([])
   const title = gifId ? gifId.title : "Cargando..."

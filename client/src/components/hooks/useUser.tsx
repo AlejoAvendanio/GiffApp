@@ -1,11 +1,18 @@
 import {useContext, useCallback,useState} from 'react'
 import Context from '../context/userContex'
 import { UserContexType } from './type'
-import loginService from "../fetch/login"
+import loginService, { user } from "../fetch/login"
 import addFav from '../fetch/addFavorite'
-import { getInfoById } from '../fetch/useFetch'
+import { getInfoById, searchId } from '../fetch/useFetch'
 import { UseRandom } from '../fetch/random'
 
+
+export type Favorite ={
+  id:string,
+  url:string,
+  shared:string,
+  title:string
+}
 
 export const useUser = () => {
     const {jwt, setJWT,setFav,favs} = useContext(Context) as UserContexType
@@ -34,16 +41,10 @@ export const useUser = () => {
     },[setJWT,logins])
 
 
-    // const random = useCallback((e:any)=>{
-    //   UseRandom().then((res)=>setRandom(res))
-      
-    // },[])
-
-    const fav = useCallback((gif:any)=>{
-      const token = window.sessionStorage.getItem("jwt") || ""
-      console.log(gif)
-      addFav(gif,token)
-        .then((res:any)=>{
+    const fav = useCallback((gif:Favorite)=>{
+      addFav(gif,jwt)
+      .then((res:Favorite[])=>{
+          console.log(res)
           setFav(res)
           window.localStorage.setItem("favs",JSON.stringify(favs))
         })
@@ -56,7 +57,7 @@ export const useUser = () => {
     },[setJWT])
 
 
-    const detailFunction = useCallback((id:string)=>{
+    const detailFunction = useCallback((id:searchId)=>{
       getInfoById(id).then(gif=>setGifId(gif))
     },[]
     )

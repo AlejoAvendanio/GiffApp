@@ -46,7 +46,7 @@ export default function SearchResults() {
     useEffect(()=>{
       if(page===INITIAL_STATE)return
       UseFetch({ keyword:input, page, rating:rating}).then(res=>{
-        setGifs((prevGifs:any)=> prevGifs?.concat(res))
+        setGifs((prevGifs:Gifs[])=> prevGifs?.concat(res))
         setLastSearch(gifs)
       })
     },[page,input,rating])
@@ -54,8 +54,7 @@ export default function SearchResults() {
     // useSEO({title:title})
     let titlePage = input?.toUpperCase()
     useEffect(()=>{
-      const handleNextPage = (entries:any)=>{
-        console.log(entries)
+      const handleNextPage = (entries:IntersectionObserverEntry[])=>{
         const el = entries[0]
         if(el.isIntersecting){
           setLoading(true)

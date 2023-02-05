@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const postMessages = async(jwt:string,id:string,info:any)=>{
+export const postMessages = async(jwt:string,id:string,info:string)=>{
     const token = jwt.slice(1,-1)  
     const config = {
         method: "post",
@@ -14,7 +14,6 @@ export const postMessages = async(jwt:string,id:string,info:any)=>{
 
 export const allMessages = async (jwt:string,chatID:string)=>{
     const token = jwt.slice(1,-1)  
-    console.log(chatID)
     const config = {
         method: "post",
         baseURL: `http://localhost:3002/messages/allMessages`,
