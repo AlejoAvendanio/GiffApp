@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Favorite } from "../hooks/useUser";
 
+
 export const ENDPOINT = "https://giffapp-production.up.railway.app"
 
 

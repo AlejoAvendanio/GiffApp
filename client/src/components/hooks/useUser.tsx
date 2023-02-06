@@ -3,8 +3,9 @@ import Context from '../context/userContex'
 import { UserContexType } from './type'
 import loginService, { user } from "../fetch/login"
 import addFav from '../fetch/addFavorite'
-import { getInfoById, searchId } from '../fetch/useFetch'
+import UseFetch, { getInfoById, searchId } from '../fetch/useFetch'
 import { UseRandom } from '../fetch/random'
+import { Gifs } from '../list/listOfGifs'
 
 
 export type Favorite ={
@@ -20,7 +21,9 @@ export const useUser = () => {
     error: false})
     const [logins, setLogins] = useState(false)
     const [gifId,setGifId] = useState("")
-
+    const [gifs, setGifs] = useState<Array<Gifs>>([])
+    const [randoms, setRandom] = useState<string>("")
+    const [loading, setLoading] = useState<Boolean>(false)
     const login = useCallback((input:any)=>{
       setState({loading:true,error:false})
       return loginService(input)
@@ -62,6 +65,23 @@ export const useUser = () => {
     },[]
     )
 
+    const randomGif = useCallback(()=>{
+      try{
+        if(!gifs.length){
+        UseRandom().then(res=>{
+          setRandom(res)
+          UseFetch({keyword:res}).then(gifs=>{
+            setGifs(gifs)
+            setLoading(true)
+          })
+        })} 
+      }catch(e){
+        console.log(e)
+      }
+    },[gifs.length])
+
+
+
   return {
     isLogged:Boolean(jwt),
     isLoginLoading:state.loading,
@@ -71,6 +91,13 @@ export const useUser = () => {
     fav,
     favs,
     gifId,
-    detailFunction
+    detailFunction,
+    gifs,
+    setGifs,
+    randoms,
+    setRandom,
+    loading,
+    setLoading,
+    randomGif
   }
 }

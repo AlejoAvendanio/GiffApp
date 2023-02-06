@@ -11,18 +11,16 @@ import { Server } from "socket.io";
 const PORT = process.env.PORT || 3001
 const app = express()
 const server = http.createServer(app);
-const httpServer=server.listen(PORT)
+const httpServer=server.listen(3002)
 
 const io = new Server(httpServer,{
 	pingTimeout:60000,
 	cors:{
-		origin:"https://giffy-cyan-six.vercel.app"
+		origin:"http://localhost:3000"
 	}
 })
 io.on("connection",(socket)=>{
 	console.log("connected to socket")
-	
-	
 	socket.on("setup",(data)=>{
 		socket.join(data)
 		console.log(data)

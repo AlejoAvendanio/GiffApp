@@ -19,38 +19,18 @@ import { useMessages } from '../../hooks/useMessages'
 const name = window.localStorage.getItem("name")
 
 export const Home = () => {
-  const [gifs, setGifs] = useState<Array<Gifs>>([])
-  const [randoms, setRandom] = useState<string>("")
   const [openChat, setOpenChat] = useState<boolean>(false)
   const [openChat2, setOpenChat2] = useState<boolean>(false)
   const {getAllMessages}= useMessages()
   const {currentChat, chatInfo,allChats,chatSelected,setChatSelected,setChatInfo} = useChat()
-  const [loading, setLoading] = useState<Boolean>(false)
+  const { gifs, setGifs,randoms,loading,setLoading,randomGif} = useUser()
   const title = gifs.length>0 ? "Home | GiffApp" : loading ? "" :"Cargando... | GiffApp"
   let lastSearch:any
   const {isLogged} = useUser()
   
   useEffect(()=>{
-    try{
-      UseRandom().then(res=>{
-        setRandom(res)
-      }) 
-    }catch(e){
-      console.log(e)
-    }
-  },[])
-
-  useEffect(function(){
-    setLoading(false)
-    try{
-      UseFetch({keyword:randoms }).then(gifs=>{
-        setGifs(gifs)
-        setLoading(true)
-      })
-    }catch(e){
-      throw new Error()
-    }
-  },[randoms,setRandom])
+    randomGif()
+  },[randomGif])
 
   const handleChat = ()=>{
     setOpenChat(!openChat)
@@ -64,7 +44,10 @@ export const Home = () => {
   }
   lastSearch = window.localStorage.getItem("lastsearch")
   JSON.parse(lastSearch)
-  const tittle:string = randoms.split(" ").slice(0,2).join(" ")
+  const tittle:string = randoms.split(" ").slice(0,3).join(" ")
+  
+    console.log(chatInfo)
+  
   return (
     <div style={{position:"relative"}}>
       <Helmet>
@@ -132,9 +115,9 @@ export const Home = () => {
         :<div onClick={handleChat2} style={{color:"aliceblue",height:40,background:"#202c33", display:'flex',width:300, right:310, position:"fixed", zIndex:100,bottom:0}}>
           <p style={{position:"absolute",top:-10,width:60}}>{
                 chatInfo.friend1 !== name ?
-                <p style={{margin:"0 0 0 10px"}}>{chatInfo.friend1}</p>
+                <p style={{display:"flex",margin:"2px 0 0 10px",width:"200px"}}>{chatInfo.friend1}</p>
                 :
-                <p style={{margin:"0 0 0 10px"}}>{chatInfo.friend2}</p>
+                <p style={{margin:"0 0 0 10px",width:"100%"}}>{chatInfo.friend2}</p>
                 }</p>
         <span onClick={()=>setChatSelected(null)} style={{top:4,position:"absolute",right:0,fontSize:20,fontWeight:600,color:"#ff6961",width:40}}>X </span>
         </div>

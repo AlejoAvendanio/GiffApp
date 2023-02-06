@@ -109,7 +109,8 @@
 
 @media (max-width: 600px) {
   .card{
-      max-width:120px ;
+      min-width: 100%;
+      min-height: 100%;
   }
   .card:nth-child(5n + 1){
     /* border:  solid 3px red ; */

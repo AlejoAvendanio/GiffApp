@@ -4,11 +4,10 @@ import { useChat } from "../../hooks/useChat";
 import { useMessages } from "../../hooks/useMessages";
 import axios from "axios";
 import "./style.css"
-import ScrollToBottom from "../../../scroll";
+import { ENDPOINT } from "../../fetch/addFavorite";
 let socket 
 let selectedChatCompare
 const name = window.localStorage.getItem("name")
-
 
 export const Chat = ({handleChat2}) => {
   const [message, setMessage] = useState();
@@ -34,7 +33,7 @@ export const Chat = ({handleChat2}) => {
   
 
   useEffect(()=>{
-    socket =io("https://giffapp-production.up.railway.app")
+    socket =io(`${ENDPOINT}`)
     socket.emit("setup",name)
     socket.on("conected",()=>setSocketConnection(true))
     socket.on("typing",(data)=>{
@@ -72,7 +71,7 @@ export const Chat = ({handleChat2}) => {
         const token = jwt.slice(1,-1)  
         const config = {
           method: "post",
-          baseURL: `https://giffapp-production.up.railway.app/messages`,
+          baseURL: `${ENDPOINT}/messages`,
           headers:{token:token},
           data:{id:chatSelected,content:newMessage.content}
         }
@@ -109,11 +108,11 @@ export const Chat = ({handleChat2}) => {
             //noti
           }else{
             setMessages([...messages,newMessageRecived])
-            
           }
         })
       })
 
+      console.log(messages)
 
     return (
 
