@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 // import { useNavigate } from 'react-router'
 import { useUser } from '../hooks/useUser'
+import { LoginModal } from '../login/loginModal'
 import  ModalPortal  from '../modal'
 import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register/inex'
+import { RegisterModal } from '../register/RegisterModal'
 import "./style.css"
 type FAVS =  {
     id:string,
@@ -60,7 +62,7 @@ const Fav:React.FC<FAVS> = ({id,url,shared,title})=> {
         <div>
           <span className='span-type' style={{padding:"5px", cursor:"pointer"}} onClick={()=>handleSetTypeRegister()}>Register</span>
           <span className='span-type' style={{padding:"5px", cursor:"pointer"}} onClick={()=>handleSetTypeLogin()}>Login</span>
-            {type==="register" ? <RegisterPage/> : <LoginPage/> }
+            {type==="register" ? <RegisterModal/> : <LoginModal/> }
         </div> }</ModalPortal>}
     </>
   )

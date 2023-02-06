@@ -1,5 +1,7 @@
 .sectionRelevant{
     display: flex;
+    align-items: center;
+    padding-left: 30px;
 }
 
 .img{
@@ -13,4 +15,18 @@
 }
 .detail_title{
     margin-left: 30px;
+}
+
+
+@media (max-width: 600px) {
+    .sectionRelevant{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0;
+    }
+    .divrev{
+        width: 90%;
+        display: flex;
+    }
 }

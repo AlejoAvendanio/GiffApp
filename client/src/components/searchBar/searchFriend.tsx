@@ -22,7 +22,6 @@ export const SearchFriend = () => {
     }
     const handleSelectChat = (e:string):void=>{
         setChatSelected(e)
-        //info del chat
         currentChat(e)
     }
     const createChats = (e: string):void=>{

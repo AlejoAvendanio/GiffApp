@@ -23,7 +23,6 @@ export default function init(httpServer: any) {
 }
 
 export function getIO(): ServerType {
-	console.log(io)
 	if (!io) {
 		throw new Error('Socket IO not defined!');
 	}

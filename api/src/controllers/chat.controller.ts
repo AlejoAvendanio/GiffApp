@@ -5,7 +5,7 @@ const chatSchema = require("../models/chat")
 
 export const createChat =async (req:Request, res:Response, next:any) => {
 	const { id } = req.body;
-	const {user} = req 
+	const {user} = req;
     const friend = await userSchema.findOne({_id:id})
 	if (!friend) {
 		const statusError = res.status(400).send('Chat requires a name and an image to be created');
@@ -13,7 +13,7 @@ export const createChat =async (req:Request, res:Response, next:any) => {
 	}
 	var newChat ={
 		friend1:friend.name,
-		friend2:user,
+		friend2:user.name,
 		isGroupChat:false,
 		users:[id,user._id]
 	}
@@ -39,7 +39,6 @@ export const getAllChatsUser = async (req:Request,res:Response)=>{
 	const {_id} = req.user
 	try{
 		let allChats =await userSchema.findOne({_id})
-		console.log(allChats)
 		res.json(allChats.chats)
 	}catch(e){
 		res.status(400).send(e)

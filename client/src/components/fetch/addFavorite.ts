@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Favorite } from "../hooks/useUser";
 
-export const ENDPOINT = "https://giffy-cyan-six.vercel.app"
+export const ENDPOINT = "http://localhost:3002"
 
 
 
