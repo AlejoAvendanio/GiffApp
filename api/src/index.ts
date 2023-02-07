@@ -11,7 +11,7 @@ import { Server } from "socket.io";
 const PORT = process.env.PORT || 3001
 const app = express()
 const server = http.createServer(app);
-const httpServer=server.listen(g)
+const httpServer=server.listen("https://giffapp-production.up.railway.app")
 
 const io = new Server(httpServer,{
 	pingTimeout:60000,
