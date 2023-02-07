@@ -11,12 +11,12 @@ import { Server } from "socket.io";
 const PORT = process.env.PORT || 3001
 const app = express()
 const server = http.createServer(app);
-const httpServer=server.listen(3002)
+const httpServer=server.listen(g)
 
 const io = new Server(httpServer,{
 	pingTimeout:60000,
 	cors:{
-		origin:"http://localhost:3000"
+		origin:"https://giffy-cyan-six.vercel.app"
 	}
 })
 io.on("connection",(socket)=>{
